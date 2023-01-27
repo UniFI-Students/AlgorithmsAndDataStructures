@@ -1,10 +1,16 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 public class CircularLinkedList<T> {
+	private final ISortingManager sortingManager;
 	private Node<T> head;
 	private int count;
+	
+	public CircularLinkedList(ISortingManager sortingManager) {
+		this.sortingManager = sortingManager;
+	}
 	
 	
 	public int getCount() {
@@ -67,14 +73,30 @@ public class CircularLinkedList<T> {
 		while(curr.getNext() != head) {
 			str.append(curr);
 			str.append(", ");
+			curr = curr.getNext();
 		}
 		str.append(curr);
 		return str.toString();
 	}
 	
 	public String toSortedByKeyString() {
-		// TODO: Implement this method
-		throw new UnsupportedOperationException();
+		List<Node<T>> allNodes = new ArrayList<Node<T>>();
+
+		Node<T> curr = head;
+		do {
+			allNodes.add(curr);
+			curr = curr.getNext();
+		} while(curr!=head);
+		
+		sortingManager.sort(allNodes, (Node<T> a, Node<T> b)->Integer.compare(a.getKey(), b.getKey()));
+
+		StringBuilder str = new StringBuilder();
+		for(Node<T> node:allNodes) {
+			str.append(node);
+			str.append(", ");
+		}
+
+		return str.substring(0, str.length() - 2);
 	}
 		
 	public String findNodeAsString(int key) {
@@ -109,7 +131,7 @@ public class CircularLinkedList<T> {
 			nextNearestNode = nextNearestNode.getNext();
 			++nextNearestNodePathLength;
 		}
-		if (prevNearestNodePathLength == count - nextNearestNodePathLength) return Arrays.asList(prevNearestNode);
+		if (prevNearestNodePathLength == (count - nextNearestNodePathLength)%count) return Arrays.asList(prevNearestNode);
 		if (prevNearestNodePathLength == nextNearestNodePathLength) return Arrays.asList(prevNearestNode, nextNearestNode);
 		if (prevNearestNodePathLength < nextNearestNodePathLength) return Arrays.asList(prevNearestNode);
 		else return Arrays.asList(nextNearestNode);
