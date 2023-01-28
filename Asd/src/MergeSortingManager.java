@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+//Daniil Radchanka 7079901
+//Anastasia Moskalenko 7015595
 public class MergeSortingManager implements ISortingManager {
 	@Override
 	public <T> void sort(List<T> collection, Comparator<T> comparator) {

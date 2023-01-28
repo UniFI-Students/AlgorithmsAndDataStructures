@@ -1,4 +1,6 @@
 
+//Daniil Radchanka 7079901
+//Anastasia Moskalenko 7015595
 public class Node<T> {
 	private T value;
 	private int key;

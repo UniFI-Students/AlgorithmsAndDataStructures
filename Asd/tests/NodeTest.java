@@ -2,6 +2,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+//Daniil Radchanka 7079901
+//Anastasia Moskalenko 7015595
 public class NodeTest {
 
 	@Test

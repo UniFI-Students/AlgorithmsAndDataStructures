@@ -7,6 +7,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+//Daniil Radchanka 7079901
+//Anastasia Moskalenko 7015595
 public class CircularLinkedListTest {
 
 	private CircularLinkedList<Integer> list;

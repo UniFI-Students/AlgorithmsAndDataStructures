@@ -3,6 +3,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+//Daniil Radchanka 7079901
+//Anastasia Moskalenko 7015595
 public class CircularLinkedList<T> {
 	private final ISortingManager sortingManager;
 	private Node<T> head;
